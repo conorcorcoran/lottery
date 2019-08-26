@@ -5,7 +5,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
+/*
+ * Ticket class
+ * This class is used for creating the tickets as well as checking the 
+ * results, amending tickets and other general methods
+ */
 public class Ticket {
 	private ArrayList<int[]> lines = new ArrayList<int[]>();
 	private boolean checked;
@@ -29,6 +33,7 @@ public class Ticket {
 	}
 
 	public JSONObject getLines(){
+		checked = true;
 		JSONObject jsonobj = new JSONObject();
 		for(int i = 0; i < lines.size(); i++) {
 			int[] tempArray = new int[3];
@@ -84,6 +89,30 @@ public class Ticket {
 			result = 10;
 		}
 		return result;
+	}
+	
+	public int getNumberOfLines() {
+		return lines.size();
+	}
+	
+	public boolean getCheckedStatus() {
+		return checked;
+	}
+	
+	public void presetLines() {
+		lines.clear();
+		//Result = 10
+		int[] line1 = {1,1,0};
+		//result = 5
+		int[] line2 = {2,2,2}; 
+		//result = 1
+		int[] line3 = {1,0,2};
+		//result = 0
+		int[] line4 = {0,1,0};
+		lines.add(line1);
+		lines.add(line2);
+		lines.add(line3);
+		lines.add(line4);
 	}
 	
 }
