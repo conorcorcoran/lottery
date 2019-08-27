@@ -28,7 +28,7 @@ public class Ticket {
 		}
 	}
 
-	private static int getRandNum(){
+	public int getRandNum(){
 		return (int)(Math.random() * ((2 - 0) + 1)); 
 	}
 
