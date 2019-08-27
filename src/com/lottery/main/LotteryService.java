@@ -28,7 +28,7 @@ public class LotteryService {
 	 * @return Response confirming the ticket creation and what ID it has
 	 */
 	@POST
-	@Path("/ticket/createTicket")
+	@Path("/createTicket")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String createTicket() {
 		//Create new ticket with 3 lines
@@ -43,7 +43,7 @@ public class LotteryService {
 	 * @return List of ticket ID's 
 	 */
 	@GET
-	@Path("/ticket/listTickets")
+	@Path("/tickets")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String listTickets() {
 		String response = "";
@@ -65,9 +65,9 @@ public class LotteryService {
 	 * @return Response containing details about the ticket
 	 */
 	@GET
-	@Path("/ticket/getTicket")
+	@Path("/ticket/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getTicket(@QueryParam("id") int id){
+	public String getTicket(@PathParam("id") int id){
 		String response = "No tickets created yet";
 		if(!tickets.isEmpty()) {
 			for(int i = 0; i < tickets.size(); i++) {
@@ -89,9 +89,9 @@ public class LotteryService {
 	 * @return Response with how many lines have been added to what ticket
 	 */
 	@PUT
-	@Path("/ticket/amendTicket")
+	@Path("/amendTicket/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String amendTicket(@QueryParam("id") int id, @QueryParam("numOfLines") int numOfLines) {
+	public String amendTicket(@PathParam("id") int id, @QueryParam("numOfLines") int numOfLines) {
 		String response = "";
 		if(tickets.containsKey(id)) {
 			if(!tickets.get(id).getCheckedStatus()) {
@@ -115,9 +115,9 @@ public class LotteryService {
 	 * @return The results unsorted and sorted of each line of the ticket
 	 */
 	@PUT
-	@Path("/status/getStatus")
+	@Path("/status/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getStatus(@QueryParam("id") int id) {
+	public String getStatus(@PathParam("id") int id) {
 		String response = "";
 		if(tickets.containsKey(id)) {
 			HashMap<String, Integer> results = new HashMap<String, Integer>();

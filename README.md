@@ -1,4 +1,5 @@
 
+
 # Lottery
 
 Lottery REST API designed to create, amend and check lottery tickets
@@ -10,12 +11,12 @@ Postman was used to test sending the requests to the API.
 
 
 ## Usage
-POST ```/Lottery/ticket/createTicket```
+POST ```/Lottery/createTicket```
 Creates a new ticket
 ### Request 
 
 ```
-http://localhost:8080/Lottery/ticket/createTicket
+http://localhost:8080/Lottery/createTicket
 ```
 
 ### Response
@@ -23,11 +24,11 @@ http://localhost:8080/Lottery/ticket/createTicket
 New ticket created with id 1
 ```
 ---
-GET ```/Lottery/ticket/getTicket```
+GET ```/Lottery/ticket/{id}```
 Gets a ticket with specified ID
 ### Request
 ```
-http://localhost:8080/Lottery/ticket/getTicket?id=1
+http://localhost:8080/Lottery/ticket/1
 ```
 
 ### Response
@@ -35,7 +36,7 @@ http://localhost:8080/Lottery/ticket/getTicket?id=1
 Ticket id 1 contains 3 lines
 ```
 ---
-GET ```/Lottery/ticket/listTickets```
+GET ```/Lottery/tickets```
 Returns a list of tickets available 
 ### Request 
 ```
@@ -47,12 +48,12 @@ http://localhost:8080/Lottery/ticket/listTickets
 Ticket ID's: 1, 2, 3
 ```
 ---
-PUT ```/Lottery/ticket/amendTicket```
+PUT ```/Lottery/amendTicket/{id}```
 Adds new lines to specified ticket
 ### Request
 
 ```
-http://localhost:8080/Lottery/ticket/amendTicket?id=1&numOfLines=3
+http://localhost:8080/Lottery/amendTicket/1?numOfLines=3
 ```
 
 ### Response
@@ -60,11 +61,11 @@ http://localhost:8080/Lottery/ticket/amendTicket?id=1&numOfLines=3
 3 lines added to Ticket id: 1
 ```
 ---
-PUT ```/Lottery/status/getStatus```
+PUT ```/Lottery/status/{id}```
 ### Request
 
 ```
-http://localhost:8080/Lottery/status/getStatus?id=1
+http://localhost:8080/Lottery/status/1
 ```
 
 ### Response
