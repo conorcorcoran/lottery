@@ -1,4 +1,4 @@
-package com.lottery;
+package com.lottery.main;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -12,11 +12,16 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * LotteryService Class
+ * This contains the rest api that is used to operate the Lottery.
+ */
+
 @Path("/")
 public class LotteryService {
 
-	private static HashMap<Integer, Ticket> tickets = new HashMap<Integer, Ticket>();
-	private static final AtomicInteger count = new AtomicInteger(0);
+	private static HashMap<Integer, Ticket> tickets = new HashMap<Integer, Ticket>(); //This HashMap will contain all the tickets created
+	private static final AtomicInteger count = new AtomicInteger(0); //This is used to create ID's for each ticket
 
 	@POST
 	@Path("/ticket/createTicket")

@@ -1,8 +1,10 @@
-package com.lottery;
+package com.lottery.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.After;
 import org.junit.jupiter.api.Test;
+
+import com.lottery.main.LotteryService;
 
 class LotteryTests {
 	private final LotteryService lotteryService = new LotteryService();

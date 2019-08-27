@@ -1,15 +1,16 @@
-package com.lottery;
+package com.lottery.main;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/*
+/**
  * Ticket class
  * This class is used for creating the tickets as well as checking the 
  * results, amending tickets and other general methods
  */
+
 public class Ticket {
 	private ArrayList<int[]> lines = new ArrayList<int[]>();
 	private boolean checked;
@@ -28,10 +29,19 @@ public class Ticket {
 		}
 	}
 
+	/**
+	 * Generates a random number between 0 - 2.
+	 * @return A random number between 0 and 2.
+	 */
 	public int getRandNum(){
 		return (int)(Math.random() * ((2 - 0) + 1)); 
 	}
 
+	/**
+	 * Creates a JSON Object containing the name of a the line
+	 * and an array of numbers in the line.
+	 * @return JSONObject with the Line index and an array of numbers.
+	 */
 	public JSONObject getLines(){
 		checked = true;
 		JSONObject jsonobj = new JSONObject();
@@ -51,6 +61,10 @@ public class Ticket {
 		return jsonobj;
 	}
 
+	/**
+	 * This method is used in the amendLines method in the LotteryServices
+	 * @param numOfLines The number of lines to be added to the ticket
+	 */
 	public void addLines(int numOfLines) {
 		while(numOfLines > 0) {
 			int[] line = new int[3];
@@ -62,6 +76,11 @@ public class Ticket {
 		}
 	}
 
+	/**
+	 * Used to calcuate the results of each line in a ticket
+	 * @param line A JSONArray repersenting a single line in a ticket
+	 * @return The result of the 3 numbers contained in the line
+	 */
 	public int getResult(JSONArray line) {
 		int result = 0;
 		int total = 0;
@@ -70,7 +89,6 @@ public class Ticket {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-
 		if(total != 2) {
 			try {
 				if(line.getInt(0) == line.getInt(1) && line.getInt(1) == line.getInt(2)) {
@@ -91,14 +109,26 @@ public class Ticket {
 		return result;
 	}
 	
+	/**
+	 * Gets the number of lines a ticket has.
+	 * @return Number of lines of a ticket
+	 */
 	public int getNumberOfLines() {
 		return lines.size();
 	}
 	
+	/**
+	 * Checks to see if a tickets status has been check already.
+	 * If so, the ticket can not be amended.
+	 * @return Boolean of the checked status
+	 */
 	public boolean getCheckedStatus() {
 		return checked;
 	}
 	
+	/**
+	 * Preset lines with known results or test purposes.
+	 */
 	public void presetLines() {
 		lines.clear();
 		//Result = 10
