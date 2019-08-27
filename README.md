@@ -7,7 +7,8 @@ Lottery REST API designed to create, amend and check lottery tickets
 ## Info
 
 This project was created in Eclipse with Apache Tomcat used as the server.
-Postman was used to test sending the requests to the API.	
+Postman was used to test sending the requests to the API. Below are examples 
+of each of the endpoint in the API. It includes a request and response from each.
 
 
 ## Usage
