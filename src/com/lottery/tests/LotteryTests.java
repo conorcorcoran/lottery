@@ -6,6 +6,11 @@ import org.junit.jupiter.api.Test;
 
 import com.lottery.main.LotteryService;
 
+/**
+ * Lottery Test
+ * This is a test class made up of unit tests.
+ * It goes through each method in the LotteryService class.
+ */
 class LotteryTests {
 	private final LotteryService lotteryService = new LotteryService();
 	
@@ -32,10 +37,11 @@ class LotteryTests {
 	
 	@Test
 	public void testListingTickets() {
+		assertEquals("No tickets created yet", lotteryService.listTickets());
 		lotteryService.createTicket();
 		lotteryService.createTicket();
 		lotteryService.createTicket();
-		assertEquals("1 2 3 ", lotteryService.listTickets());
+		assertEquals("Ticket ID's: 1, 2, 3", lotteryService.listTickets());
 	}
 	
 	@Test
@@ -56,7 +62,8 @@ class LotteryTests {
 		lotteryService.amendTicket(1, 3);
 		assertEquals(6, lotteryService.getNumOfLines(1));
 		assertEquals("Ticket id: 8 not found", lotteryService.amendTicket(8, 3));
-		
+		lotteryService.getStatus(1);
+		assertEquals("Tickt already checked, can't be amended", lotteryService.amendTicket(1, 3));
 	}
 	
 	@Test

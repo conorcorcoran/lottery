@@ -44,7 +44,7 @@ http://localhost:8080/Lottery/ticket/listTickets
 
 ### Response
 ```
-1
+Ticket ID's: 1, 2, 3
 ```
 ---
 PUT ```/Lottery/ticket/amendTicket```
