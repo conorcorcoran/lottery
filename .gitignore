@@ -1,3 +1,4 @@
 .settings
-classpath
+.classpath
+.project
 build/
